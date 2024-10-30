@@ -3,9 +3,19 @@ apiVersion: kubeflow.org/v1
 kind: Notebook
 metadata:
   name: notebook-sample-v1
+  namespace: notebook
+  labels:
+    kueue.x-k8s.io/queue-name: notebook-queue
 spec:
   template:
     spec:
       containers:
         - name: notebook-sample-v1
           image: kubeflownotebookswg/jupyter:latest
+          resources:
+            requests:
+              cpu: "250m"      # For testing purposes on kind cluster.
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
