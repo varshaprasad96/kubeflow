@@ -1,0 +1,66 @@
+Name:             notebook-sample-v1-0
+Namespace:        notebook
+Priority:         0
+Service Account:  default
+Node:             kueue-notebooks-control-plane/172.18.0.3
+Start Time:       Mon, 06 Jan 2025 12:04:15 -0800
+Labels:           apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=notebook-sample-v1-f78c48666
+                  kueue.x-k8s.io/managed=true
+                  kueue.x-k8s.io/queue-name=notebook-queue
+                  notebook-name=notebook-sample-v1
+                  statefulset=notebook-sample-v1
+                  statefulset.kubernetes.io/pod-name=notebook-sample-v1-0
+                  test=app
+Annotations:      <none>
+Status:           Running
+IP:               10.244.0.17
+IPs:
+  IP:           10.244.0.17
+Controlled By:  StatefulSet/notebook-sample-v1
+Containers:
+  notebook-sample-v1:
+    Container ID:   containerd://3f4945939e835abb1d8c4954ba335bad6abf3001c911d404f77b0bc10e149b73
+    Image:          kubeflownotebookswg/jupyter:latest
+    Image ID:       docker.io/kubeflownotebookswg/jupyter@sha256:9b1446c5469d1814e875fd37219790f522d75fa65af8a58028ea1974764a31e9
+    Port:           8888/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 06 Jan 2025 12:04:21 -0800
+    Ready:          True
+    Restart Count:  0
+    Requests:
+      cpu:     25m
+      memory:  25Mi
+    Environment:
+      NB_PREFIX:  /notebook/notebook/notebook-sample-v1
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-md8jz (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-md8jz:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason           Age    From                  Message
+  ----    ------           ----   ----                  -------
+  Normal  CreatedWorkload  2m31s  pod-kueue-controller  Created Workload: notebook/pod-notebook-sample-v1-0-d6677
+  Normal  Started          2m31s  pod-kueue-controller  Admitted by clusterQueue cluster-queue
+  Normal  Scheduled        2m31s  default-scheduler     Successfully assigned notebook/notebook-sample-v1-0 to kueue-notebooks-control-plane
+  Normal  Pulling          2m30s  kubelet               Pulling image "kubeflownotebookswg/jupyter:latest"
+  Normal  Pulled           2m25s  kubelet               Successfully pulled image "kubeflownotebookswg/jupyter:latest" in 4.972s (4.972s including waiting). Image size: 335363070 bytes.
+  Normal  Created          2m25s  kubelet               Created container notebook-sample-v1
+  Normal  Started          2m25s  kubelet               Started container notebook-sample-v1

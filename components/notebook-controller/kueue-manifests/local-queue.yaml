@@ -1,0 +1,14 @@
+# default-user-queue.yaml
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: notebook
+---
+apiVersion: kueue.x-k8s.io/v1beta1
+kind: LocalQueue
+metadata:
+  namespace: "notebook"
+  name: "notebook-queue"
+spec:
+  clusterQueue: "cluster-queue"
